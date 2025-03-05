@@ -15,7 +15,7 @@ function CardSearchBar({ setCardSearchResults }) {
       if (data.data && data.data.length > 0) {
         setCardSearchResults(data.data);
       } else {
-        setCardSearchResults([]); // Clear results if no valid data
+        setCardSearchResults([]);
       }
     }
 

@@ -1,8 +1,8 @@
 {
   "extends": "react-app",
   "rules": {
-    "no-unused-vars": "warn",
-    "no-console": "warn",
-    "react/prop-types": "off"
+    "no-console": "warn", // Will show as a warning, not an error
+    "no-unused-vars": ["warn"], // Changes it from an error to a warning
+    "react/prop-types": "off" // Disables PropTypes rule
   }
 }

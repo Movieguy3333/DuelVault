@@ -5,10 +5,13 @@ function AppNav() {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to="Valuation">Valuation</NavLink>
+          <NavLink to="valuation">Valuation</NavLink>
         </li>
         <li>
           <NavLink to="add-to-collection">Add to Collection</NavLink>
+        </li>
+        <li>
+          <NavLink to="/">Landing Page</NavLink>
         </li>
       </ul>
     </nav>
