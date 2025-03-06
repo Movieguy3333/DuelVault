@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import { useContext } from "react";
+import Button from "./Button";
+import { AppContext } from "../contextapi/AppContext";
+
 function CollectionItem({ card }) {
+  const { handleAddToCollection, handleDeleteFromCollection } =
+    useContext(AppContext);
   return (
     <div className="collection-item">
       <h3>{card.name}</h3>
@@ -16,6 +22,12 @@ function CollectionItem({ card }) {
       <p>
         <strong>Quantity:</strong> {card.card_quantity || "N/A"}
       </p>
+      <Button onClick={handleDeleteFromCollection} card={card}>
+        -
+      </Button>
+      <Button onClick={handleAddToCollection} card={card}>
+        +
+      </Button>
     </div>
   );
 }

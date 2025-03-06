@@ -1,7 +1,9 @@
-/* eslint-disable react/prop-types */
+import { useContext } from "react";
 import CollectionItem from "./CollectionItem";
+import { AppContext } from "../contextapi/AppContext";
 
-function Collection({ collection }) {
+function Collection() {
+  const { collection } = useContext(AppContext);
   return (
     <>
       <h1 className="collection-header">Collection</h1>

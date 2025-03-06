@@ -1,22 +1,11 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import { useContext } from "react";
 import Button from "./Button";
+import { AppContext } from "../contextapi/AppContext";
 
-function CardSearchItem({ card, collection, setCollection }) {
-  function handleAddToCollection(card) {
-    setCollection((prevCollection) => {
-      const existingCard = prevCollection.find((c) => c.id === card.id);
-
-      if (existingCard) {
-        return prevCollection.map((c) =>
-          c.id === card.id ? { ...c, card_quantity: c.card_quantity + 1 } : c
-        );
-      } else {
-        return [...prevCollection, { ...card, card_quantity: 1 }];
-      }
-    });
-  }
+function CardSearchItem({ card }) {
+  const { handleAddToCollection } = useContext(AppContext);
 
   return (
     <div className="card-search-item">
