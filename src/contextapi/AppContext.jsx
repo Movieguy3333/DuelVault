@@ -6,7 +6,7 @@ const AppContext = createContext();
 
 function AppProvider({ children }) {
   const [collection, setCollection] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   function handleAddToCollection(card) {
     setCollection((prevCollection) => {
