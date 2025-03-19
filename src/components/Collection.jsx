@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import CollectionItem from "./CollectionItem";
 import { AppContext } from "../contextapi/AppContext";
 
 function Collection() {
   const { collection } = useContext(AppContext);
+  const x = 3;
 
   return (
     <>
