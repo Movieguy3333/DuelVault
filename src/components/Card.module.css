@@ -1,0 +1,15 @@
+.card {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.card-image {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin: 10px 0;
+}

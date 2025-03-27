@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import styles from "./CardSearchBar.module.css"; // Import module CSS
 
 function CardSearchBar({ setCardSearchResults }) {
   const [query, setQuery] = useState("");
@@ -7,7 +8,6 @@ function CardSearchBar({ setCardSearchResults }) {
   useEffect(() => {
     async function fetchCards() {
       if (!query.trim()) {
-        // ✅ Prevent empty queries
         setCardSearchResults([]);
         return;
       }
@@ -32,7 +32,7 @@ function CardSearchBar({ setCardSearchResults }) {
         }
       } catch (error) {
         console.error("Error fetching cards:", error);
-        setCardSearchResults([]); // Prevent breaking UI on errors
+        setCardSearchResults([]);
       }
     }
 
@@ -40,9 +40,9 @@ function CardSearchBar({ setCardSearchResults }) {
   }, [query, setCardSearchResults]);
 
   return (
-    <div className="card-search-bar">
+    <div className={styles.cardSearchBar}>
       <input
-        className="search"
+        className={styles.search}
         type="text"
         placeholder="Search cards..."
         value={query}

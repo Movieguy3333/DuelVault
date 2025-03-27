@@ -3,17 +3,18 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { AppContext } from "../contextapi/AppContext";
+import styles from "./CardSearchItem.module.css"; // Import module CSS
 
 function CardSearchItem({ card }) {
   const { handleAddToCollection } = useContext(AppContext);
 
   return (
-    <div className="card-search-item">
+    <div className={styles.cardSearchItem}>
       <h3>{card.name}</h3>
       <img
         src={card.card_images[0].image_url}
         alt={card.name}
-        className="card-image"
+        className={styles.cardImage}
       />
 
       <p>

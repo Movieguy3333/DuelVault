@@ -1,0 +1,13 @@
+.cardSearchBar {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search {
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}

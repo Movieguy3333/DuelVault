@@ -1,6 +1,7 @@
 import { useState } from "react";
+import styles from "./SignUpForm.module.css";
 
-function LoginForm() {
+function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,10 +10,10 @@ function LoginForm() {
   }
 
   return (
-    <div className="form sign-up-form">
-      <h2 className="form-header">Sign-Up</h2>
+    <div className={styles.form}>
+      <h2 className={styles.formHeader}>Sign-Up</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-field">
+        <div className={styles.formField}>
           <label>Email:</label>
           <input
             type="email"
@@ -21,7 +22,7 @@ function LoginForm() {
             required
           />
         </div>
-        <div className="form-field">
+        <div className={styles.formField}>
           <label>Password:</label>
           <input
             type="password"
@@ -36,4 +37,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default SignUpForm;

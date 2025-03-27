@@ -1,23 +1,49 @@
 import { NavLink } from "react-router-dom";
+import styles from "./AppNav.module.css"; // Import module CSS
 
 function AppNav() {
   return (
-    <nav className="nav">
+    <nav className={styles.nav}>
       <ul>
         <li>
-          <NavLink to="/app/valuation">Valuation</NavLink>
+          <NavLink
+            to="/app/valuations"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Valuation
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/app/add-to-collection">Add to Collection</NavLink>
+          <NavLink
+            to="/app/add-to-collection"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Add to Collection
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/">Landing Page</NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Landing Page
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/sign-up">Sign-up</NavLink>
+          <NavLink
+            to="/sign-up"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Sign-up
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Login
+          </NavLink>
         </li>
       </ul>
     </nav>

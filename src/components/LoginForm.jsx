@@ -1,53 +1,45 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../contextapi/AppContext";
+import styles from "./LoginForm.module.css";
 
 function LoginForm() {
-  const { user, setUser } = useContext(AppContext); // Use context to access user and setUser
-
+  const { user, setUser } = useContext(AppContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // For error messages
-  const [loading, setLoading] = useState(false); // For loading state
-  const [loggedIn, setLoggedIn] = useState(false); // Track login status
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  // If user is already logged in (user context is set), display a message
   useEffect(() => {
     if (user) {
-      setLoggedIn(true); // If user data exists, set loggedIn to true
+      setLoggedIn(true);
     }
   }, [user]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     setLoading(true);
-    setError(""); // Reset error on new submit
+    setError("");
 
-    const loginData = {
-      email,
-      password,
-    };
+    const loginData = { email, password };
 
     try {
       const response = await fetch("/api/user/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setUser(data.user); // Set user in context if login is successful
-        setLoggedIn(true); // Update login status
-        console.log("Login successful:", data);
+        setUser(data.user);
+        setLoggedIn(true);
       } else {
         setError(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
-      console.error("Error during login:", error);
       setError("An error occurred. Please try again later.");
     } finally {
       setLoading(false);
@@ -55,18 +47,17 @@ function LoginForm() {
   }
 
   return (
-    <div className="form login-form">
-      <h2 className="form-header">Login</h2>
+    <div className={styles["login-form"]}>
+      <h2 className={styles["form-header"]}>Login</h2>
 
-      {/* If user is logged in, display the user info */}
       {loggedIn && user ? (
-        <div className="user-info">
+        <div className={styles["user-info"]}>
           <h3>Welcome, {user.name}</h3>
           <p>Email: {user.email}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div className="form-field">
+          <div className={styles["form-field"]}>
             <label>Email:</label>
             <input
               type="email"
@@ -75,7 +66,7 @@ function LoginForm() {
               required
             />
           </div>
-          <div className="form-field">
+          <div className={styles["form-field"]}>
             <label>Password:</label>
             <input
               type="password"
@@ -90,8 +81,7 @@ function LoginForm() {
         </form>
       )}
 
-      {/* Display error message */}
-      {error && <p className="error">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 }

@@ -17,7 +17,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="app" element={<AppLayout />}>
             <Route index element={<Navigate replace to="valuation" />} />
-            <Route path="valuation" element={<Valuations />} />
+            <Route path="valuations" element={<Valuations />} />
             <Route path="add-to-collection" element={<AddToCollection />} />
           </Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />

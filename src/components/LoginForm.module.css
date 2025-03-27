@@ -1,0 +1,70 @@
+/* LoginForm.module.css - Scoped Login Form Styles */
+
+.login-form {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.form-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffcc00;
+}
+
+.form-field {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+}
+
+.form-field input:focus {
+  outline: 2px solid #ffcc00;
+}
+
+button[type="submit"] {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #e6b800;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.user-info {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 5px;
+}

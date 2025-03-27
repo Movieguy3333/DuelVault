@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 
 import CardSearchItem from "./CardSearchItem";
+import styles from "./CardSearchResult.module.css"; // Import module CSS
 
 function CardSearchResult({ cardSearchResults }) {
   return (
-    <div className="card-search-results">
+    <div className={styles.cardSearchResults}>
       {cardSearchResults.length !== 0 ? (
         cardSearchResults.map((card) => (
           <CardSearchItem card={card} key={card.id} />

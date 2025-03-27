@@ -1,19 +1,20 @@
 /* eslint-disable react/prop-types */
-
 import { useContext } from "react";
 import Button from "./Button";
 import { AppContext } from "../contextapi/AppContext";
+import styles from "./CollectionItem.module.css"; // Import the CSS module
 
 function CollectionItem({ card }) {
   const { handleAddToCollection, handleDeleteFromCollection } =
     useContext(AppContext);
+
   return (
-    <div className="collection-item">
+    <div className={styles["collection-item"]}>
       <h3>{card.name}</h3>
       <img
         src={card.card_images[0].image_url}
         alt={card.name}
-        className="card-image"
+        className={styles["card-image"]} // Use CSS module for class
       />
 
       <p>

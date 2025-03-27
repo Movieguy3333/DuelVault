@@ -1,0 +1,23 @@
+/* Collection.module.css - Scoped Collection Styles */
+
+.collection-header {
+  text-align: center;
+}
+
+.collection {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.collection-item {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
