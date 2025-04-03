@@ -83,12 +83,44 @@ export const loginUser = async (req, res) => {
       status: "success",
       user: {
         id: user._id,
-        name: user.name,
+        username: user.username,
         email: user.email,
+        cardCollection: user.cardCollection,
       },
     });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ message: "Server error. Please try again." });
+  }
+};
+
+export const updateCollection = async (req, res) => {
+  try {
+    const { collection } = req.body; // The new collection sent from the frontend
+    const userId = req.params.id;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update the user's card collection
+    user.cardCollection = collection; // Replace the existing collection with the new one
+
+    // Save the updated user with the new collection
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      status: "success",
+      user: {
+        id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        cardCollection: updatedUser.cardCollection, // Return the updated collection
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };

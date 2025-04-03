@@ -4,12 +4,15 @@ import { AppContext } from "../contextapi/AppContext";
 import styles from "./LoginForm.module.css";
 
 function LoginForm() {
-  const { user, setUser } = useContext(AppContext);
+  const { user, setUser, setCollection } = useContext(AppContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    console.log("User:", user);
+  }, [user]);
 
   useEffect(() => {
     if (user) {
@@ -34,7 +37,9 @@ function LoginForm() {
       const data = await response.json();
 
       if (response.ok) {
-        setUser(data.user);
+        setUser(() => data.user);
+
+        setCollection(() => data.user.cardCollection);
         setLoggedIn(true);
       } else {
         setError(data.message || "Login failed. Please try again.");
@@ -42,6 +47,7 @@ function LoginForm() {
     } catch (error) {
       setError("An error occurred. Please try again later.");
     } finally {
+      console.log(user);
       setLoading(false);
     }
   }
@@ -52,8 +58,9 @@ function LoginForm() {
 
       {loggedIn && user ? (
         <div className={styles["user-info"]}>
-          <h3>Welcome, {user.name}</h3>
+          <h3>Welcome, {user.username}</h3>
           <p>Email: {user.email}</p>
+          <p>_id : {user.id}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
