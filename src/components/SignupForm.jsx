@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 
 function SignUpForm() {
@@ -10,7 +10,7 @@ function SignUpForm() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const navigate = useNavigate(); // Initialize navigation
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -31,8 +31,8 @@ function SignUpForm() {
       if (response.ok) {
         setSuccess("User registered successfully!");
         setTimeout(() => {
-          navigate("/login"); // Redirect to login page
-        }, 2000); // Delay for user feedback
+          navigate("/login");
+        }, 2000);
       } else {
         setError(data.message || "An error occurred");
       }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CardSearchBar from "./CardSearchBar";
 import CardSearchResult from "./CardSearchResult";
-import styles from "./AddToCollection.module.css"; // Import module CSS
+import styles from "./AddToCollection.module.css";
 
 function AddToCollection() {
   const [cardSearchResults, setCardSearchResults] = useState([]);

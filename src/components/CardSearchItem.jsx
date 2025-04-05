@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { AppContext } from "../contextapi/AppContext";
-import styles from "./CardSearchItem.module.css"; // Import module CSS
+import styles from "./CardSearchItem.module.css";
 
 function CardSearchItem({ card }) {
   const { handleAddToCollection } = useContext(AppContext);

@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { AppContext } from "../contextapi/AppContext";
-import styles from "./CollectionItem.module.css"; // Import the CSS module
+import styles from "./CollectionItem.module.css";
 
 function CollectionItem({ card }) {
   const { handleAddToCollection, handleDeleteFromCollection } =

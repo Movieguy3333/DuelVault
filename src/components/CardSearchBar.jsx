@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import styles from "./CardSearchBar.module.css"; // Import module CSS
+import styles from "./CardSearchBar.module.css"; 
 
 function CardSearchBar({ setCardSearchResults }) {
   const [query, setQuery] = useState("");

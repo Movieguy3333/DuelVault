@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import CardSearchItem from "./CardSearchItem";
-import styles from "./CardSearchResult.module.css"; // Import module CSS
+import styles from "./CardSearchResult.module.css";
 
 function CardSearchResult({ cardSearchResults }) {
   return (

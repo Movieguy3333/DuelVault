@@ -5,7 +5,6 @@ import { createContext, useState, useEffect } from "react";
 const AppContext = createContext();
 
 function AppProvider({ children }) {
-  // Retrieve user and collection from localStorage on initial load
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
@@ -16,7 +15,6 @@ function AppProvider({ children }) {
   const [user, setUser] = useState(storedUser);
   const [collection, setCollection] = useState(storedCollection);
 
-  // Update localStorage whenever user or collection changes
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -31,9 +29,8 @@ function AppProvider({ children }) {
     }
   }, [user, collection]);
 
-  // Function to update the collection in the backend
   const updateCollectionInBackend = async (newCollection) => {
-    if (!user) return; // Ensure user is logged in before updating collection
+    if (!user) return;
 
     try {
       const response = await fetch(
@@ -43,22 +40,21 @@ function AppProvider({ children }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ collection: newCollection }), // Send updated collection to backend
+          body: JSON.stringify({ collection: newCollection }),
         }
       );
 
       const data = await response.json();
 
       if (response.ok) {
-        setUser(data.user); // Update user context with new collection
-        setCollection(data.user.cardCollection); // Update local state collection
+        setUser(data.user);
+        setCollection(data.user.cardCollection);
       }
     } catch (error) {
       console.error("Error updating collection:", error);
     }
   };
 
-  // Function to add card to the collection
   function handleAddToCollection(card) {
     setCollection((prevCollection) => {
       const existingCard = prevCollection.find((c) => c.id === card.id);
@@ -72,14 +68,12 @@ function AppProvider({ children }) {
         updatedCollection = [...prevCollection, { ...card, card_quantity: 1 }];
       }
 
-      // Update backend with the new collection
       updateCollectionInBackend(updatedCollection);
 
-      return updatedCollection; // Return the new collection to update local state
+      return updatedCollection;
     });
   }
 
-  // Function to delete card from the collection
   function handleDeleteFromCollection(card) {
     setCollection((prevCollection) => {
       const updatedCollection = prevCollection
@@ -88,10 +82,9 @@ function AppProvider({ children }) {
         )
         .filter((c) => c.card_quantity > 0);
 
-      // Update backend with the new collection
       updateCollectionInBackend(updatedCollection);
 
-      return updatedCollection; // Return the updated collection to update local state
+      return updatedCollection;
     });
   }
 

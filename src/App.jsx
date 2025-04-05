@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Valuations from "./components/Valuations";
 import AddToCollection from "./components/AddToCollection";
-import { AppProvider } from "./contextapi/AppContext"; // Import the provider
+import { AppProvider } from "./contextapi/AppContext";
 
 function App() {
   return (
