@@ -13,7 +13,6 @@ function AppLayout() {
       <AppNav />
       <Outlet />
       <Collection />
-      <Footer />
     </div>
   );
 }

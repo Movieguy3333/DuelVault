@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Valuations from "./components/Valuations";
 import AddToCollection from "./components/AddToCollection";
 import { AppProvider } from "./contextapi/AppContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </AppProvider>
   );

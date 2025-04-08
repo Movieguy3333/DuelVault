@@ -29,6 +29,7 @@ function AppNav() {
             Landing Page
           </NavLink>
         </li>
+
         <li>
           <NavLink
             to="/sign-up"

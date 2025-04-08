@@ -1,12 +1,14 @@
 import Logo from "./Logo";
 import styles from "./Header.module.css";
 
+import HeaderNav from "./HeaderNav";
+
 function Header() {
   return (
     <header className={styles.header}>
       {" "}
-      {/* Use the CSS module for the header class */}
       <Logo />
+      <HeaderNav />
     </header>
   );
 }
