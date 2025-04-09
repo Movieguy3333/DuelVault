@@ -7,7 +7,7 @@ function LandingPage() {
       <div className={styles.container}>
         <header className={styles.header}>
           <div className={styles.heroContent}>
-            <h1 className={styles.title}>Welcome to DuelVault</h1>
+            <h1 className={styles.title}>Welcome to YourYugiohVault</h1>
             <p className={styles.subtitle}>
               The ultimate Yu-Gi-Oh! app to manage your collection and track
               card prices.
