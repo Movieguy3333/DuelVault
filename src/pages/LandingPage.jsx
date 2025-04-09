@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom"; // Import Link from React Router
 import styles from "./LandingPage.module.css"; // Import the CSS module
-import AppNav from "../components/AppNav";
 
 function LandingPage() {
   return (
     <>
-      <AppNav />
       <div className={styles.container}>
         <header className={styles.header}>
           <div className={styles.heroContent}>
@@ -25,7 +23,6 @@ function LandingPage() {
           </div>
         </header>
 
-        {/* Feature Section */}
         <section className={styles.features}>
           <div className={styles.feature}>
             <h3>Track Prices</h3>

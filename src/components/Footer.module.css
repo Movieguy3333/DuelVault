@@ -1,11 +1,11 @@
 /* Footer Section */
 .footer {
   background: rgba(0, 0, 0, 0.8); /* Dark footer */
-  color: #bdbdbd;
+
   width: 100%;
   padding: 30px 0;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 60px;
   border: 1px solid #fbc02d;
 }
 

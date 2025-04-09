@@ -21,31 +21,6 @@ function AppNav() {
             Add to Collection
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Landing Page
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/sign-up"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Sign-up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/login"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Login
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );

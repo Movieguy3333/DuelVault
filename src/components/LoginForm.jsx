@@ -2,6 +2,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../contextapi/AppContext";
 import styles from "./LoginForm.module.css";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const { user, setUser, setCollection } = useContext(AppContext);
@@ -9,14 +10,15 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     console.log("User:", user);
   }, [user]);
 
   useEffect(() => {
     if (user) {
-      setLoggedIn(true);
+      setLoggingIn(true);
     }
   }, [user]);
 
@@ -40,7 +42,10 @@ function LoginForm() {
         setUser(() => data.user);
 
         setCollection(() => data.user.cardCollection);
-        setLoggedIn(true);
+        setLoggingIn(true);
+        setTimeout(() => {
+          navigate("/app");
+        }, 200);
       } else {
         setError(data.message || "Login failed. Please try again.");
       }
@@ -56,12 +61,11 @@ function LoginForm() {
     <div className={styles["login-form"]}>
       <h2 className={styles["form-header"]}>Login</h2>
 
-      {loggedIn && user ? (
-        <div className={styles["user-info"]}>
-          <h3>Welcome, {user.username}</h3>
-          <p>Email: {user.email}</p>
-          <p>_id : {user.id}</p>
-        </div>
+      {loggingIn && user ? (
+        <>
+          <div className={styles["loader"]}></div>
+          <span>Please wait...</span>
+        </>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className={styles["form-field"]}>

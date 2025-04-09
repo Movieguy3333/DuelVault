@@ -32,7 +32,7 @@ function SignUpForm() {
         setSuccess("User registered successfully!");
         setTimeout(() => {
           navigate("/login");
-        }, 2000);
+        }, 1000);
       } else {
         setError(data.message || "An error occurred");
       }

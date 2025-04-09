@@ -9,7 +9,6 @@ import Collection from "../components/Collection";
 function AppLayout() {
   return (
     <div className="app">
-      <Header />
       <AppNav />
       <Outlet />
       <Collection />

@@ -7,17 +7,19 @@ import Valuations from "./components/Valuations";
 import AddToCollection from "./components/AddToCollection";
 import { AppProvider } from "./contextapi/AppContext";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
     <AppProvider>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="login" element={<Login />} />
           <Route path="app" element={<AppLayout />}>
-            <Route index element={<Navigate replace to="valuation" />} />
+            <Route index element={<Navigate replace to="valuations" />} />
             <Route path="valuations" element={<Valuations />} />
             <Route path="add-to-collection" element={<AddToCollection />} />
           </Route>
