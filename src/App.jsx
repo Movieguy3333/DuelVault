@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
+
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -8,6 +8,7 @@ import AddToCollection from "./components/AddToCollection";
 import { AppProvider } from "./contextapi/AppContext";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route index element={<LandingPage />} />
+          <Route index element={<HomePage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="login" element={<Login />} />
           <Route path="app" element={<AppLayout />}>

@@ -5,11 +5,11 @@ import { createContext, useState, useEffect } from "react";
 const AppContext = createContext();
 
 function AppProvider({ children }) {
-  const storedUser = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
+  const storedUser = sessionStorage.getItem("user")
+    ? JSON.parse(sessionStorage.getItem("user"))
     : null;
-  const storedCollection = localStorage.getItem("collection")
-    ? JSON.parse(localStorage.getItem("collection"))
+  const storedCollection = sessionStorage.getItem("collection")
+    ? JSON.parse(sessionStorage.getItem("collection"))
     : [];
 
   const [user, setUser] = useState(storedUser);
@@ -17,15 +17,15 @@ function AppProvider({ children }) {
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("user", JSON.stringify(user));
     } else {
-      localStorage.removeItem("user");
+      sessionStorage.removeItem("user");
     }
 
     if (collection) {
-      localStorage.setItem("collection", JSON.stringify(collection));
+      sessionStorage.setItem("collection", JSON.stringify(collection));
     } else {
-      localStorage.removeItem("collection");
+      sessionStorage.removeItem("collection");
     }
   }, [user, collection]);
 

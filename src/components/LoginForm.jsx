@@ -48,7 +48,7 @@ function LoginForm() {
         setLoggingIn(true);
         setTimeout(() => {
           navigate("/app");
-        }, 200);
+        }, 100);
       } else {
         setError(data.message || "Login failed. Please try again.");
       }
@@ -90,7 +90,7 @@ function LoginForm() {
             />
           </div>
           <button type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+            Login
           </button>
         </form>
       )}

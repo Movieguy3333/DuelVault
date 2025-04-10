@@ -6,7 +6,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <p className={styles.footerText}>
-          © 2025 YourYugiohVault. All rights reserved.
+          © 2025 YourYugiohProfits. All rights reserved.
         </p>
         <div className={styles.footerLinks}>
           <Link to="/about" className={styles.footerLink}>

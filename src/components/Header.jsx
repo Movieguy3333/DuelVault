@@ -8,7 +8,7 @@ function Header() {
     <header className={styles.header}>
       {" "}
       <Logo />
-      <h2>YourYugiohVault</h2>
+      <h2>YourYugiohProfits</h2>
       <HeaderNav />
     </header>
   );

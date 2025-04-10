@@ -35,6 +35,9 @@ function HeaderNav() {
                 Login
               </NavLink>
             </li>
+          </>
+        ) : (
+          <>
             <li>
               <NavLink
                 to="/app/add-to-collection"
@@ -43,18 +46,17 @@ function HeaderNav() {
                 Collection
               </NavLink>
             </li>
+            <li>
+              <Button
+                onClick={() => {
+                  setCollection([]);
+                  setUser(null);
+                }}
+              >
+                Logout
+              </Button>
+            </li>
           </>
-        ) : (
-          <li>
-            <Button
-              onClick={() => {
-                setCollection([]);
-                setUser(null);
-              }}
-            >
-              Logout
-            </Button>
-          </li>
         )}
       </ul>
     </nav>
