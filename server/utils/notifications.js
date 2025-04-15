@@ -31,7 +31,7 @@ const sendNotification = async (email, cardName, oldPrice, newPrice) => {
 };
 
 cron.schedule("0 0 * * 0", async () => {
-  console.log("Running card price check...");
+  console.log("Running weekly card price check...");
 
   const users = await User.find();
   for (const user of users) {

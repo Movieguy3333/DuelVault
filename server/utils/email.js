@@ -12,7 +12,7 @@ export const sendLoginEmail = async (userEmail) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: userEmail,
-    subject: "Login Notification - DuelVault",
+    subject: "Login Notification - YourYugiohProfits",
     text: `Hello,\n\nYou just logged into your DuelVault account.\n\nIf this wasn't you, please secure your account immediately.`,
   };
 

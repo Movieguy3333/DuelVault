@@ -1,19 +1,74 @@
 .collection-item {
-  border: 1px outset rgb(172, 147, 4);
+  border: 3px outset rgb(52, 44, 0);
   background-color: #ffd50008;
   padding: 15px;
   border-radius: 10px;
   text-align: center;
   width: 250px;
   box-shadow: 0 4px 8px rgba(255, 234, 0, 0.897);
+  position: relative;
 }
+
 .collection-item:hover {
-  border: 1px outset rgb(255, 221, 3);
+  transition: 0.2s;
+  border: 3px outset rgb(255, 213, 3);
 }
 
 .card-image {
-  width: 100%;
-  max-height: 150px;
   object-fit: contain;
   margin: 10px 0;
+  max-width: 130px;
+  height: auto;
+}
+
+/* New styles */
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.alert-status {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 28px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.alert-status.on {
+  background-color: #00ff00;
+  box-shadow: 0 0 6px #00ff00;
+}
+
+.alert-status.off {
+  background-color: transparent;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 111px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-status.off::before {
+  content: "×";
+}
+
+/* Toggle button styling */
+
+.toggle-alerts-button {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.toggle-alerts-button:hover {
+  background-color: #ffcc00;
 }

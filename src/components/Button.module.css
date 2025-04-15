@@ -8,6 +8,7 @@
   margin-top: 10px;
   transition: 0.3s;
   margin: 3px;
+  -webkit-text-stroke: 0px black;
 }
 
 .btn:hover {

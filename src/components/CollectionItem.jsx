@@ -6,6 +6,7 @@ import styles from "./CollectionItem.module.css";
 
 function CollectionItem({ card }) {
   const [updatedCardPrice, setUpdatedCardPrice] = useState(null);
+  const [alertsOn, setAlertsOn] = useState(true);
 
   useEffect(() => {
     async function fetchCards() {
@@ -39,14 +40,25 @@ function CollectionItem({ card }) {
   const { handleAddToCollection, handleDeleteFromCollection } =
     useContext(AppContext);
 
+  const toggleAlerts = () => {
+    setAlertsOn(!alertsOn);
+  };
+
   return (
     <div className={styles["collection-item"]}>
       <h3>{card.name}</h3>
-      <img
-        src={card.card_images[0].image_url}
-        alt={card.name}
-        className={styles["card-image"]}
-      />
+      <div className={styles["image-wrapper"]}>
+        <img
+          src={card.card_images[0].image_url}
+          alt={card.name}
+          className={styles["card-image"]}
+        />
+        <div
+          className={`${styles["alert-status"]} ${
+            alertsOn ? styles["on"] : styles["off"]
+          }`}
+        ></div>
+      </div>
 
       <p>
         <strong>Price on Save:</strong> $
@@ -63,6 +75,9 @@ function CollectionItem({ card }) {
       </Button>
       <Button onClick={handleAddToCollection} card={card}>
         +
+      </Button>
+      <Button onClick={toggleAlerts}>
+        {alertsOn ? "Disable Alerts" : "Enable Alerts"}
       </Button>
     </div>
   );
