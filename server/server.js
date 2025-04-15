@@ -1,10 +1,11 @@
 import app from "./index.js";
 import mongoose from "mongoose";
+import "./utils/notifications.js";
 
-const DB =
-  "mongodb+srv://movieguy3333:YLitYwBf7bzWUVcp@cluster0.padtks9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-// Connect to MongoDB without outdated options
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
 mongoose
   .connect(DB)
   .then(() => {
@@ -14,7 +15,7 @@ mongoose
     console.error("DB connection error:", err);
   });
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

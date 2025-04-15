@@ -3,21 +3,17 @@ import bcrypt from "bcryptjs";
 
 export const getAllUsers = async (req, res) => {
   try {
-    // Use Mongoose to find all users
     const users = await User.find();
 
-    // If no users found, return an appropriate message
     if (users.length === 0) {
       return res.status(404).json({ message: "No users found" });
     }
 
-    // Return the users as a JSON response
     res.status(200).json({
       status: "success",
       data: users,
     });
   } catch (err) {
-    // Handle any errors during the query
     console.error("Error fetching users:", err);
     res.status(500).json({ message: "Server error. Could not fetch users." });
   }
@@ -39,7 +35,6 @@ export const createUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Hash the password before saving
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -96,19 +91,16 @@ export const loginUser = async (req, res) => {
 
 export const updateCollection = async (req, res) => {
   try {
-    const { collection } = req.body; // The new collection sent from the frontend
+    const { collection } = req.body;
     const userId = req.params.id;
 
-    // Find the user by ID
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Update the user's card collection
-    user.cardCollection = collection; // Replace the existing collection with the new one
+    user.cardCollection = collection;
 
-    // Save the updated user with the new collection
     const updatedUser = await user.save();
 
     res.status(200).json({
