@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import Button from "./Button";
@@ -6,7 +7,10 @@ import styles from "./CollectionItem.module.css";
 
 function CollectionItem({ card }) {
   const [updatedCardPrice, setUpdatedCardPrice] = useState(null);
-  const [alertsOn, setAlertsOn] = useState(true);
+  const [alertsOn, setAlertsOn] = useState(card.card_price_alert);
+  const [priceAlertAmount, setPriceAlertAmount] = useState(
+    card.card_price_alert_amount
+  );
 
   useEffect(() => {
     async function fetchCards() {
@@ -37,48 +41,85 @@ function CollectionItem({ card }) {
     fetchCards();
   }, [card.name]);
 
-  const { handleAddToCollection, handleDeleteFromCollection } =
-    useContext(AppContext);
+  function toggleAlertsOn() {
+    setAlertsOn(() => !alertsOn);
+    handleSetPriceAlert(card, !alertsOn);
+  }
 
-  const toggleAlerts = () => {
-    setAlertsOn(!alertsOn);
-  };
+  const {
+    handleAddToCollection,
+    handleDeleteFromCollection,
+    handleSetPriceAlertAmount,
+    handleSetPriceAlert,
+  } = useContext(AppContext);
 
   return (
     <div className={styles["collection-item"]}>
-      <h3>{card.name}</h3>
-      <div className={styles["image-wrapper"]}>
-        <img
-          src={card.card_images[0].image_url}
-          alt={card.name}
-          className={styles["card-image"]}
-        />
-        <div
-          className={`${styles["alert-status"]} ${
-            alertsOn ? styles["on"] : styles["off"]
-          }`}
-        ></div>
-      </div>
+      <div className={styles["card-info"]}>
+        <h3>{card.name}</h3>
+        <div className={styles["image-wrapper"]}>
+          <img
+            src={card.card_images[0].image_url}
+            alt={card.name}
+            className={styles["card-image"]}
+          />
+          <div
+            className={`${styles["alert-status"]} ${
+              alertsOn ? styles["on"] : styles["off"]
+            }`}
+          ></div>
+        </div>
 
-      <p>
-        <strong>Price on Save:</strong> $
-        {card.card_prices[0].tcgplayer_price || "N/A"}
-      </p>
-      <p>
-        <strong>Current Price:</strong> ${updatedCardPrice || "N/A"}
-      </p>
-      <p>
-        <strong>Quantity:</strong> {card.card_quantity || "N/A"}
-      </p>
-      <Button onClick={handleDeleteFromCollection} card={card}>
-        -
-      </Button>
-      <Button onClick={handleAddToCollection} card={card}>
-        +
-      </Button>
-      <Button onClick={toggleAlerts}>
-        {alertsOn ? "Disable Alerts" : "Enable Alerts"}
-      </Button>
+        <p>
+          <strong>Price on Save:</strong> $
+          {card.card_prices[0].tcgplayer_price || "N/A"}
+        </p>
+        <p>
+          <strong>Current Price:</strong> ${updatedCardPrice || "N/A"}
+        </p>
+        <p>
+          <strong>Quantity:</strong> {card.card_quantity || "N/A"}
+        </p>
+        <Button onClick={handleDeleteFromCollection} card={card}>
+          -
+        </Button>
+        <Button onClick={handleAddToCollection} card={card}>
+          +
+        </Button>
+        <Button onClick={toggleAlertsOn}>
+          {alertsOn ? "Disable Alerts" : "Enable Alerts"}
+        </Button>
+      </div>
+      <div className={styles["price-alert-info"]}>
+        <input
+          size="100"
+          type="number"
+          placeholder="Set price alert..."
+          value={priceAlertAmount}
+          onChange={(e) => setPriceAlertAmount(e.target.value)}
+        />
+        <Button
+          onClick={() => handleSetPriceAlertAmount(card, priceAlertAmount)}
+        >
+          Set Price Alert
+        </Button>
+        {/*   <button onClick={() => handleSetPriceAlert(card, priceAlertAmount)}>
+        Set Price Alert
+      </button> */}
+        <p>
+          Price Alerts:
+          {alertsOn ? "Enabled" : "Disabled"}
+        </p>
+        <p>
+          {!alertsOn &&
+          Number(priceAlertAmount) > Number(card.card_prices[0].tcgplayer_price)
+            ? "Alerts are disabled."
+            : Number(priceAlertAmount) >
+              Number(card.card_prices[0].tcgplayer_price)
+            ? `You will get an email notification when ${card.name} reaches $${priceAlertAmount}`
+            : "Number is not valid!"}
+        </p>
+      </div>
     </div>
   );
 }

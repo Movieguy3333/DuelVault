@@ -4,24 +4,34 @@
   padding: 15px;
   border-radius: 10px;
   text-align: center;
-  width: 250px;
+
   box-shadow: 0 4px 8px rgba(255, 234, 0, 0.897);
-  position: relative;
 }
 
 .collection-item:hover {
-  transition: 0.2s;
+  transition: 0.4s;
   border: 3px outset rgb(255, 213, 3);
 }
 
 .card-image {
   object-fit: contain;
   margin: 10px 0;
-  max-width: 130px;
+  max-width: 110px;
   height: auto;
 }
+.card-info {
+  border: 1px solid #ff0000;
+}
+.price-alert-info {
+  border: 1px solid #33ff00;
+}
 
-/* New styles */
+input {
+  font-family: "Courier New", Courier, monospace;
+}
+input[type="number"] {
+  font-size: 20px;
+}
 
 .image-wrapper {
   position: relative;
@@ -38,14 +48,15 @@
 }
 
 .alert-status.on {
+  border: 2px solid rgb(158, 255, 150);
+
   background-color: #00ff00;
   box-shadow: 0 0 6px #00ff00;
 }
 
 .alert-status.off {
-  background-color: transparent;
   color: #ff0000;
-  font-weight: bold;
+
   font-size: 111px;
   display: flex;
   align-items: center;
@@ -55,8 +66,6 @@
 .alert-status.off::before {
   content: "×";
 }
-
-/* Toggle button styling */
 
 .toggle-alerts-button {
   background-color: #ffd700;
@@ -71,4 +80,55 @@
 
 .toggle-alerts-button:hover {
   background-color: #ffcc00;
+}
+
+@media screen and (min-width: 540px) {
+  .collection-item {
+  }
+  .card-info {
+    float: left;
+    border: 1px solid #c300ff;
+  }
+  .price-alert-info {
+    height: 100%;
+
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .price-alert-info p:first-of-type {
+    margin-top: 10px;
+    font-size: 1.8em;
+  }
+  .price-alert-info p:last-of-type {
+    margin-top: 20px;
+    font-size: 1.7em;
+  }
+  .price-alert-info p {
+  }
+  .price-alert-info input {
+    margin-top: 10%;
+  }
+}
+
+@media screen and (min-width: 790px) {
+  .collection-item {
+    border: 1px solid #00ff00;
+  }
+  .price-alert-info {
+    height: 100%;
+    font-size: 1.5em;
+    width: 400px;
+  }
+  .price-alert-info p:first-of-type {
+    margin-top: 10px;
+    font-size: 1.5em;
+  }
+  .price-alert-info p:last-of-type {
+    margin-top: 10px;
+    font-size: 1.3em;
+  }
+  /*  .price-alert-info {
+    height: 100%;
+    font-size: 1.5em;
+  } */
 }

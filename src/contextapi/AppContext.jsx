@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import { createContext, useState, useEffect } from "react";
@@ -65,7 +66,64 @@ function AppProvider({ children }) {
           c.id === card.id ? { ...c, card_quantity: c.card_quantity + 1 } : c
         );
       } else {
-        updatedCollection = [...prevCollection, { ...card, card_quantity: 1 }];
+        updatedCollection = [
+          ...prevCollection,
+          {
+            ...card,
+            card_quantity: 1,
+            card_price_alert: true,
+            card_price_alert_amount: (
+              Number(card.card_prices[0].tcgplayer_price) + 5
+            ).toString(),
+          },
+        ];
+      }
+
+      updateCollectionInBackend(updatedCollection);
+
+      return updatedCollection;
+    });
+  }
+
+  function handleSetPriceAlertAmount(card, priceAlertAmount) {
+    if (
+      priceAlertAmount &&
+      Number(priceAlertAmount) > Number(card.card_prices[0].tcgplayer_price)
+    ) {
+      setCollection((prevCollection) => {
+        const existingCard = prevCollection.find((c) => c.id === card.id);
+
+        let updatedCollection;
+        if (existingCard) {
+          updatedCollection = prevCollection.map((c) =>
+            c.id === card.id
+              ? { ...c, card_price_alert_amount: priceAlertAmount }
+              : c
+          );
+        }
+
+        updateCollectionInBackend(updatedCollection);
+
+        return updatedCollection;
+      });
+      alert("Price Alert Amount Successfully Set!");
+    } else {
+      if (!priceAlertAmount) alert("Please use a valid number.");
+      else
+        alert(
+          "The price alert number must be greater than the price of the card on save."
+        );
+    }
+  }
+  function handleSetPriceAlert(card, priceAlertBoolean) {
+    setCollection((prevCollection) => {
+      const existingCard = prevCollection.find((c) => c.id === card.id);
+
+      let updatedCollection;
+      if (existingCard) {
+        updatedCollection = prevCollection.map((c) =>
+          c.id === card.id ? { ...c, card_price_alert: priceAlertBoolean } : c
+        );
       }
 
       updateCollectionInBackend(updatedCollection);
@@ -97,6 +155,8 @@ function AppProvider({ children }) {
         setUser,
         handleAddToCollection,
         handleDeleteFromCollection,
+        handleSetPriceAlert,
+        handleSetPriceAlertAmount,
       }}
     >
       {children}

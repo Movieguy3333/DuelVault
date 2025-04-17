@@ -30,7 +30,8 @@ const sendNotification = async (email, cardName, oldPrice, newPrice) => {
   }
 };
 
-cron.schedule("0 0 * * 0", async () => {
+//cron.schedule("0 0 * * 0", async () => {
+cron.schedule("*/1 * * * *", async () => {
   console.log("Running weekly card price check...");
 
   const users = await User.find();
@@ -52,11 +53,18 @@ cron.schedule("0 0 * * 0", async () => {
         if (data.data && data.data.length > 0) {
           const currentPrice = data.data[0].card_prices[0].tcgplayer_price;
           const savedPrice = card.card_prices[0].tcgplayer_price;
+          const priceAlertAmount = card.card_price_alert_amount;
+          const priceAlertBoolean = card.card_price_alert;
 
           console.log(`Current price of ${data.data[0].name}: ${currentPrice}`);
-          console.log(`Saved price of ${card.name}: ${savedPrice}`);
+          console.log(
+            `Price alert amount of ${card.name}: ${priceAlertAmount}`
+          );
           if (currentPrice && savedPrice) {
-            if (Number(currentPrice) + 6 - Number(savedPrice) >= 5) {
+            if (
+              Number(currentPrice) + 50 >= Number(priceAlertAmount) &&
+              priceAlertBoolean
+            ) {
               console.log(`Sending email to ${user.email}`);
               await sendNotification(
                 user.email,
