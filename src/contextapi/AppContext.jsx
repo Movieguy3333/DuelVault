@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AppContext = createContext();
 
@@ -145,6 +146,27 @@ function AppProvider({ children }) {
       return updatedCollection;
     });
   }
+  async function handleDeleteUser(id) {
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setUser(null);
+        setCollection([]);
+
+        alert("Account Successfully Deleted");
+      }
+    } catch (error) {
+      console.error("Error deleting account", error);
+    }
+  }
 
   return (
     <AppContext.Provider
@@ -153,6 +175,7 @@ function AppProvider({ children }) {
         setCollection,
         user,
         setUser,
+        handleDeleteUser,
         handleAddToCollection,
         handleDeleteFromCollection,
         handleSetPriceAlert,

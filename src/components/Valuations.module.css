@@ -1,20 +1,33 @@
 .valuation {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .card-image {
-  width: 100%;
-  max-height: 150px;
-  object-fit: contain;
-  margin: 10px 0;
+  float: left;
+  object-fit: cover;
+
+  /* Add these: */
+  width: 120px; /* or whatever size you want */
+  height: 30%; /* maintain aspect ratio */
 }
 
-.card-search-item,
-.collection-item {
-  background-color: #222;
+.valuation-item {
+  border: 3px outset rgba(114, 118, 0, 0.801);
+  background-color: #000900b2;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 30px;
   text-align: center;
-  width: 250px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  margin: 10px;
+}
+.collection-value-header {
+  text-align: center;
+  font-size: 2.5em;
+}
+.chart {
+  max-width: 100%;
+  font-size: 1.5em;
+  margin: 20px auto;
 }

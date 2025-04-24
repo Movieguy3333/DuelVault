@@ -11,8 +11,7 @@ function LandingPage() {
           <div className={styles.heroContent}>
             <h1 className={styles.title}>Welcome to YourYugiohProfits</h1>
             <p className={styles.subtitle}>
-              The ultimate Yu-Gi-Oh! app to manage your collection and track
-              card prices.
+              The ultimate Yu-Gi-Oh! app for making profits!
             </p>
             <Button
               onClick={() =>
@@ -37,19 +36,16 @@ function LandingPage() {
 
         <section className={styles.features}>
           <div className={styles.feature}>
-            <h3>Track Prices</h3>
+            <h3>Manage Your Collection</h3>
             <p>
-              Get live price updates on your favorite Yu-Gi-Oh! cards, and set
-              price alerts.
+              Add cards to your collection to track finacnial value of cards
             </p>
           </div>
           <div className={styles.feature}>
-            <h3>Manage Your Collection</h3>
-            <p>
-              Organize your cards, build decks, and track your collection with
-              ease.
-            </p>
+            <h3>Instant Collection Valuations</h3>
+            <p>Get an instant financial snapshot on your collection</p>
           </div>
+
           <div className={styles.feature}>
             <h3>Price Alerts</h3>
             <p>

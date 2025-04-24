@@ -47,6 +47,15 @@ function HeaderNav() {
               </NavLink>
             </li>
             <li>
+              <NavLink
+                to="account"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Account
+              </NavLink>
+            </li>
+
+            <li>
               <Button
                 onClick={() => {
                   setCollection([]);

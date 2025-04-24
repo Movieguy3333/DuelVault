@@ -20,10 +20,10 @@
   height: auto;
 }
 .card-info {
-  border: 1px solid #ff0000;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 .price-alert-info {
-  border: 1px solid #33ff00;
 }
 
 input {
@@ -87,7 +87,7 @@ input[type="number"] {
   }
   .card-info {
     float: left;
-    border: 1px solid #c300ff;
+    border: 1px solid #ffe100;
   }
   .price-alert-info {
     height: 100%;
@@ -112,7 +112,6 @@ input[type="number"] {
 
 @media screen and (min-width: 790px) {
   .collection-item {
-    border: 1px solid #00ff00;
   }
   .price-alert-info {
     height: 100%;

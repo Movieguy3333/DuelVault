@@ -1,9 +1,65 @@
 import { useContext, useMemo } from "react";
 import { AppContext } from "../contextapi/AppContext";
 import styles from "./Valuations.module.css";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Valuations() {
   const { collection } = useContext(AppContext);
+
+  const totalCollectionValue = useMemo(() => {
+    if (collection.length === 0) return null;
+
+    const total = collection.reduce((sum, card) => {
+      const price = Number(card.card_prices[0].tcgplayer_price);
+      const quantity = Number(card.card_quantity);
+      return sum + price * quantity;
+    }, 0);
+
+    return Math.round(total);
+  }, [collection]);
+
+  const priceTiers = useMemo(() => {
+    if (collection.length === 0) return null;
+
+    const tiers = {
+      "<$1": 0,
+      "$1–$5": 0,
+      "$5–$20": 0,
+      ">$20": 0,
+    };
+
+    collection.forEach((card) => {
+      const price = Number(card.card_prices[0].tcgplayer_price);
+      const quantity = Number(card.card_quantity);
+
+      if (price < 1) tiers["<$1"] += quantity;
+      else if (price <= 5) tiers["$1–$5"] += quantity;
+      else if (price <= 20) tiers["$5–$20"] += quantity;
+      else tiers[">$20"] += quantity;
+    });
+
+    return tiers;
+  }, [collection]);
+
+  const pieChartData = useMemo(() => {
+    if (!priceTiers) return null;
+
+    return {
+      labels: Object.keys(priceTiers),
+      datasets: [
+        {
+          label: "Card Quantity",
+          data: Object.values(priceTiers),
+          backgroundColor: ["#FFD700", "#00BFFF", "#32CD32", "#FF4500"],
+          borderColor: "#22",
+          borderWidth: 6,
+        },
+      ],
+    };
+  }, [priceTiers]);
 
   const highestValueCard = useMemo(() => {
     if (collection.length === 0) return null;
@@ -33,7 +89,17 @@ function Valuations() {
     <div className={styles.valuation}>
       {collection.length > 0 ? (
         <>
-          <div className={styles["card-search-item"]}>
+          <h1 className={styles["collection-value-header"]}>
+            {" "}
+            Collection Value: ${totalCollectionValue}
+          </h1>
+
+          <div className={styles.chart}>
+            <h2>Card Value Distribution</h2>
+            <Pie data={pieChartData} />
+          </div>
+
+          <div className={styles["valuation-item"]}>
             <img
               src={highestValueCard.card_images[0].image_url}
               alt={highestValueCard.name}
@@ -41,7 +107,7 @@ function Valuations() {
             />
             <h3>Highest Value Card: {highestValueCard.name}</h3>
           </div>
-          <div className={styles["card-search-item"]}>
+          <div className={styles["valuation-item"]}>
             <img
               src={highestValueCardsByName.card_images[0].image_url}
               alt={highestValueCardsByName.name}

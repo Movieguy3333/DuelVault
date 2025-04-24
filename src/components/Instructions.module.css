@@ -1,0 +1,33 @@
+.instructions {
+  background-color: #111;
+  color: #f7f7f7;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgb(255, 204, 0);
+}
+
+.instructions h1 {
+  color: #ffcc00;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.instructions p {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.instructions ul {
+  padding: 0;
+}
+
+.instructions li {
+  background-color: #222;
+  font-size: 1.4em;
+  border: 2px solid #ffcc00;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+}

@@ -14,3 +14,8 @@
 .btn:hover {
   background-color: #bf9904;
 }
+@media screen and (min-width: 720px) {
+  .btn {
+    font-size: 1.2em;
+  }
+}

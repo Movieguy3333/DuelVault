@@ -9,6 +9,7 @@ import { AppProvider } from "./contextapi/AppContext";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
+import Account from "./components/Account";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="login" element={<Login />} />
+          <Route path="account" element={<Account />} />
           <Route path="app" element={<AppLayout />}>
             <Route index element={<Navigate replace to="valuations" />} />
             <Route path="valuations" element={<Valuations />} />

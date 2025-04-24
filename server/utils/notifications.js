@@ -30,8 +30,8 @@ const sendNotification = async (email, cardName, oldPrice, newPrice) => {
   }
 };
 
-//cron.schedule("0 0 * * 0", async () => {
-cron.schedule("*/1 * * * *", async () => {
+cron.schedule("0 0 * * 0", async () => {
+  //cron.schedule("*/1 * * * *", async () => {
   console.log("Running weekly card price check...");
 
   const users = await User.find();
