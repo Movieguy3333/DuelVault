@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import Account from "./components/Account";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
             <Route path="valuations" element={<Valuations />} />
             <Route path="add-to-collection" element={<AddToCollection />} />
           </Route>
-          <Route path="*" element={<h1>Page Not Found</h1>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

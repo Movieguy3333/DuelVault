@@ -1,11 +1,21 @@
 .collection-item {
   border: 3px outset rgb(52, 44, 0);
-  background-color: #ffd50008;
+  background-color: #00000008;
   padding: 15px;
   border-radius: 10px;
   text-align: center;
 
   box-shadow: 0 4px 8px rgba(255, 234, 0, 0.897);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(33, 30, 0),
+    rgb(11, 11, 0),
+    rgb(14, 13, 0),
+    rgba(0, 0, 0, 0.758),
+    rgb(0, 0, 0),
+    rgb(25, 25, 0),
+    rgb(0, 0, 0)
+  );
 }
 
 .collection-item:hover {
@@ -87,7 +97,9 @@ input[type="number"] {
   }
   .card-info {
     float: left;
-    border: 1px solid #ffe100;
+    border-right: 6px groove #2f2700d5;
+
+    /* box-shadow: 0px 0px 200px 3px rgb(215, 208, 2); */
   }
   .price-alert-info {
     height: 100%;

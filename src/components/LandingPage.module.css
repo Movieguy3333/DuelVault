@@ -1,5 +1,5 @@
 /* Default styles */
-.container {
+.landing-page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -32,13 +32,6 @@
   font-size: 1.5rem;
   color: #bdbdbd;
   margin-bottom: 20px;
-}
-
-.buttonGroup {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
 }
 
 .features {

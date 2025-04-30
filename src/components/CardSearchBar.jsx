@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./CardSearchBar.module.css";
 
-function CardSearchBar({ setCardSearchResults }) {
-  const [query, setQuery] = useState("Dark Magician");
-
+function CardSearchBar({ setCardSearchResults, query, setQuery }) {
   useEffect(() => {
     async function fetchCards() {
       if (!query.trim()) {

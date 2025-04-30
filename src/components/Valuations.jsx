@@ -72,6 +72,17 @@ function Valuations() {
     );
   }, [collection]);
 
+  const totalCards = useMemo(() => {
+    if (collection.length === 0) return null;
+
+    const total = collection.reduce((sum, card) => {
+      const quantity = Number(card.card_quantity);
+      return sum + quantity;
+    }, 0);
+
+    return Math.round(total);
+  }, [collection]);
+
   const highestValueCardsByName = useMemo(() => {
     if (collection.length === 0) return null;
 
@@ -93,6 +104,7 @@ function Valuations() {
             {" "}
             Collection Value: ${totalCollectionValue}
           </h1>
+          <h1>You have {totalCards} cards</h1>
 
           <div className={styles.chart}>
             <h2>Card Value Distribution</h2>

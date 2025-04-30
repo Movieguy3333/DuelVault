@@ -73,11 +73,12 @@ function AppProvider({ children }) {
             ...card,
             card_quantity: 1,
             card_price_alert: true,
-            card_price_alert_amount: (
+            card_price_alert_amount: Math.round(
               Number(card.card_prices[0].tcgplayer_price) + 5
             ).toString(),
           },
         ];
+        updatedCollection.sort((a, b) => a.name.localeCompare(b.name));
       }
 
       updateCollectionInBackend(updatedCollection);
@@ -107,7 +108,9 @@ function AppProvider({ children }) {
 
         return updatedCollection;
       });
-      alert("Price Alert Amount Successfully Set!");
+      alert(
+        `Price Alert Amount For ${card.name} Successfully Set at ${priceAlertAmount}!`
+      );
     } else {
       if (!priceAlertAmount) alert("Please use a valid number.");
       else

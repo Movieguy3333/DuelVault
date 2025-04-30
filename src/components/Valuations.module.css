@@ -9,19 +9,19 @@
   float: left;
   object-fit: cover;
 
-  /* Add these: */
-  width: 120px; /* or whatever size you want */
-  height: 30%; /* maintain aspect ratio */
+  width: 120px;
+  height: 30%;
 }
 
 .valuation-item {
-  border: 3px outset rgba(114, 118, 0, 0.801);
-  background-color: #000900b2;
+  border: 3px outset rgba(251, 255, 0, 0.754);
+
   padding: 15px;
   border-radius: 30px;
   text-align: center;
   margin: 10px;
 }
+
 .collection-value-header {
   text-align: center;
   font-size: 2.5em;

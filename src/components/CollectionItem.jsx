@@ -26,8 +26,6 @@ function CollectionItem({ card }) {
         }
 
         const data = await response.json();
-        console.log("data fetched!");
-        console.log(data);
 
         if (data.data && data.data.length > 0) {
           const price = data.data[0].card_prices[0].tcgplayer_price;
@@ -94,10 +92,18 @@ function CollectionItem({ card }) {
         <input
           size="100"
           type="number"
+          min="0"
+          step="1"
           placeholder="Set price alert..."
           value={priceAlertAmount}
-          onChange={(e) => setPriceAlertAmount(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === "" || (/^\d+$/.test(value) && Number(value) >= 0)) {
+              setPriceAlertAmount(value);
+            }
+          }}
         />
+
         <Button
           onClick={() => handleSetPriceAlertAmount(card, priceAlertAmount)}
         >
