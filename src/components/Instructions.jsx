@@ -3,7 +3,7 @@ import styles from "./Instructions.module.css";
 function Instructions() {
   return (
     <div className={styles.instructions}>
-      <h1>Welcome to YourYugiohProfits</h1>
+      <h1>Welcome to DuelVault</h1>
       <h3> how to get started:</h3>
       <ul>
         <li>1. Use the search bar to find Yu-Gi-Oh! cards by name.</li>

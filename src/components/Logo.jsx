@@ -4,7 +4,7 @@ function Logo() {
   return (
     <>
       {" "}
-      <img src="/logo.png" alt="DuelVault Logo" className={styles.logo} />
+      <img src="/logo6.png" alt="DuelVault Logo" className={styles.logo} />
     </>
   );
 }

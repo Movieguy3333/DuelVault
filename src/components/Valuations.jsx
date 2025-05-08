@@ -83,19 +83,6 @@ function Valuations() {
     return Math.round(total);
   }, [collection]);
 
-  const highestValueCardsByName = useMemo(() => {
-    if (collection.length === 0) return null;
-
-    return collection.reduce((maxCardByName, currentCard) =>
-      Number(currentCard.card_prices[0].tcgplayer_price) *
-        Number(currentCard.card_quantity) >
-      Number(maxCardByName.card_prices[0].tcgplayer_price) *
-        Number(maxCardByName.card_quantity)
-        ? currentCard
-        : maxCardByName
-    );
-  }, [collection]);
-
   return (
     <div className={styles.valuation}>
       {collection.length > 0 ? (
@@ -112,20 +99,12 @@ function Valuations() {
           </div>
 
           <div className={styles["valuation-item"]}>
+            <h3>Highest Value Card:</h3>
             <img
               src={highestValueCard.card_images[0].image_url}
               alt={highestValueCard.name}
               className={styles["card-image"]}
             />
-            <h3>Highest Value Card: {highestValueCard.name}</h3>
-          </div>
-          <div className={styles["valuation-item"]}>
-            <img
-              src={highestValueCardsByName.card_images[0].image_url}
-              alt={highestValueCardsByName.name}
-              className={styles["card-image"]}
-            />
-            <h3>Highest Value Cards By Name: {highestValueCardsByName.name}</h3>
           </div>
         </>
       ) : (

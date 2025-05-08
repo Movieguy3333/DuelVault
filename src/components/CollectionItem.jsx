@@ -114,7 +114,7 @@ function CollectionItem({ card }) {
       </button> */}
         <p>
           Price Alerts:
-          {alertsOn ? "Enabled" : "Disabled"}
+          {alertsOn ? " Enabled" : " Disabled"}
         </p>
         <p>
           {!alertsOn &&

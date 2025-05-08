@@ -1,17 +1,28 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../contextapi/AppContext";
 import Button from "./Button";
 import styles from "./Account.module.css";
 
 function Account() {
   const { user, handleDeleteUser } = useContext(AppContext);
+  const navigate = useNavigate();
 
   if (!user) {
     return (
       <p className={styles.message}>Please log in to view account settings.</p>
     );
   }
+
+  const handleDeleteAndNavigate = async () => {
+    try {
+      await handleDeleteUser(user.id);
+      navigate("/");
+    } catch (err) {
+      console.error("Failed to delete user:", err);
+    }
+  };
 
   return (
     <div className={styles["account"]}>
@@ -23,9 +34,6 @@ function Account() {
         <p>
           <strong>Email:</strong> {user.email}
         </p>
-        <p>
-          <strong>Password:</strong> {user.password}
-        </p>
       </div>
 
       <div className={styles["warning"]}>
@@ -34,7 +42,7 @@ function Account() {
           Deleting your account is permanent and cannot be undone.
         </p>
         <Button
-          onClick={() => handleDeleteUser(user.id)}
+          onClick={handleDeleteAndNavigate}
           className={styles["delete-button"]}
         >
           Delete Account

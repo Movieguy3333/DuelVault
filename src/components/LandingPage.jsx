@@ -9,7 +9,7 @@ function LandingPage() {
       <div className={styles["landing-page"]}>
         <header className={styles["header"]}>
           <div className={styles["hero-content"]}>
-            <h1 className={styles["title"]}>Welcome to YourYugiohProfits</h1>
+            <h1 className={styles["title"]}>Welcome to DuelVault</h1>
             <p className={styles["subtitle"]}>
               The ultimate Yu-Gi-Oh! app for making profits!
             </p>

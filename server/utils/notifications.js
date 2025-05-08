@@ -14,12 +14,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendNotification = async (email, cardName, oldPrice, newPrice) => {
+const sendNotification = async (
+  email,
+  cardName,
+  priceAlertAmount,
+  newPrice
+) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: `Price Alert for ${cardName}!`,
-    text: `The price for ${cardName} changed from $${oldPrice} to $${newPrice}.`,
+    subject: `🚀 Price Alert for ${cardName}!`,
+    text: `Good news! The market price for ${cardName} has risen above $${priceAlertAmount} and is now $${
+      Math.round(newPrice * 100) / 100
+    }.`,
   };
 
   try {
@@ -51,9 +58,11 @@ cron.schedule("0 0 * * 0", async () => {
 
         const data = await response.json();
         if (data.data && data.data.length > 0) {
-          const currentPrice = data.data[0].card_prices[0].tcgplayer_price;
-          const savedPrice = card.card_prices[0].tcgplayer_price;
-          const priceAlertAmount = card.card_price_alert_amount;
+          const currentPrice = Number(
+            data.data[0].card_prices[0].tcgplayer_price
+          );
+          const savedPrice = Number(card.card_prices[0].tcgplayer_price);
+          const priceAlertAmount = Number(card.card_price_alert_amount);
           const priceAlertBoolean = card.card_price_alert;
 
           console.log(`Current price of ${data.data[0].name}: ${currentPrice}`);
@@ -62,15 +71,15 @@ cron.schedule("0 0 * * 0", async () => {
           );
           if (currentPrice && savedPrice) {
             if (
-              Number(currentPrice) + 50 >= Number(priceAlertAmount) &&
+              Number(currentPrice) + 20 >= Number(priceAlertAmount) &&
               priceAlertBoolean
             ) {
               console.log(`Sending email to ${user.email}`);
               await sendNotification(
                 user.email,
                 card.name,
-                savedPrice,
-                currentPrice
+                priceAlertAmount,
+                Number(currentPrice) + 20
               );
             }
           }

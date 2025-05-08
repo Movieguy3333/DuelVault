@@ -14,7 +14,7 @@ function HeaderNav() {
             to="/"
             className={({ isActive }) => (isActive ? styles.active : "")}
           >
-            Landing Page
+            Home Page
           </NavLink>
         </li>
         {!user ? (
