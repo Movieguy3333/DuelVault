@@ -71,7 +71,7 @@ cron.schedule("0 0 * * 0", async () => {
           );
           if (currentPrice && savedPrice) {
             if (
-              Number(currentPrice) + 20 >= Number(priceAlertAmount) &&
+              Number(currentPrice) >= Number(priceAlertAmount) &&
               priceAlertBoolean
             ) {
               console.log(`Sending email to ${user.email}`);
