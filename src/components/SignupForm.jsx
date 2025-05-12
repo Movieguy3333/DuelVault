@@ -18,13 +18,16 @@ function SignUpForm() {
     setSuccess(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, email, password }),
-      });
+      const response = await fetch(
+        "https://duelvault-backend-server.onrender.com/api/user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, email, password }),
+        }
+      );
 
       const data = await response.json();
 

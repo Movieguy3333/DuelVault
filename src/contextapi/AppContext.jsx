@@ -36,7 +36,7 @@ function AppProvider({ children }) {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/${user.id}`,
+        `https://duelvault-backend-server.onrender.com/api/user/${user.id}`,
         {
           method: "PUT",
           headers: {
@@ -151,12 +151,15 @@ function AppProvider({ children }) {
   }
   async function handleDeleteUser(id) {
     try {
-      const response = await fetch(`http://localhost:5000/api/user/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://duelvault-backend-server.onrender.com/api/user/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
 
