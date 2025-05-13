@@ -8,17 +8,7 @@ function Footer() {
         <p className={styles["footer-text"]}>
           © 2025 DuelVault All rights reserved.
         </p>
-        <div className={styles["footer-links"]}>
-          <Link to="/about" className={styles["footer-link"]}>
-            About
-          </Link>
-          <Link to="/contact" className={styles["footer-link"]}>
-            Contact
-          </Link>
-          <Link to="/privacy" className={styles["footer-link"]}>
-            Privacy Policy
-          </Link>
-        </div>
+
         <div className={styles["social-links"]}>
           {/* Replace with your actual social media links */}
           <a href="https://facebook.com" className={styles["social-link"]}>
